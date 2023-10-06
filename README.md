@@ -1,4 +1,4 @@
-# AASTMT | College of Artificial Intelligence
+# AASTMT | College of Artificial Intelligence()
 ## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2024-red)
 ---
 ## This Course is Conducted By:
