@@ -1,5 +1,6 @@
 # AASTMT | College of Artificial Intelligence
 ## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2024-red)
+---
 ### This Course is Conducted By:
 - _Prof. Dr. Yasser Hanafy_
 - _Eng. Ahmed M. Elsayed_
