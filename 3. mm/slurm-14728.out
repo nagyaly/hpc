@@ -1,0 +1,22 @@
+
+ Performance counter stats for './col_order-mm 1000':
+
+          8,310.96 msec task-clock                #    0.999 CPUs utilized          
+                24      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             6,884      page-faults               #    0.828 K/sec                  
+    24,874,354,382      cycles                    #    2.993 GHz                      (37.44%)
+    42,283,415,572      instructions              #    1.70  insn per cycle           (49.95%)
+     1,036,722,088      branches                  #  124.742 M/sec                    (49.96%)
+         1,118,676      branch-misses             #    0.11% of all branches          (50.00%)
+    23,156,772,168      L1-dcache-loads           # 2786.294 M/sec                    (25.03%)
+         9,528,976      L1-dcache-load-misses     #    0.04% of all L1-dcache hits    (25.03%)
+       127,336,822      LLC-loads                 #   15.322 M/sec                    (25.02%)
+         3,263,898      LLC-load-misses           #    2.56% of all LL-cache hits     (24.97%)
+
+       8.318778249 seconds time elapsed
+
+       8.271627000 seconds user
+       0.039998000 seconds sys
+
+
