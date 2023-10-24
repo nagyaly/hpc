@@ -1,0 +1,22 @@
+
+ Performance counter stats for './blocked-mm 1000 500':
+
+         11,485.15 msec task-clock                #    0.997 CPUs utilized          
+                23      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             6,882      page-faults               #    0.599 K/sec                  
+    34,416,425,446      cycles                    #    2.997 GHz                      (37.49%)
+    44,238,691,888      instructions              #    1.29  insn per cycle           (49.99%)
+     1,041,947,318      branches                  #   90.721 M/sec                    (49.99%)
+         2,144,623      branch-misses             #    0.21% of all branches          (49.99%)
+    24,762,884,331      L1-dcache-loads           # 2156.078 M/sec                    (25.01%)
+     1,291,788,549      L1-dcache-load-misses     #    5.22% of all L1-dcache hits    (25.00%)
+     1,497,818,777      LLC-loads                 #  130.414 M/sec                    (25.00%)
+           450,549      LLC-load-misses           #    0.03% of all LL-cache hits     (25.01%)
+
+      11.520602036 seconds time elapsed
+
+      11.457868000 seconds user
+       0.027994000 seconds sys
+
+
