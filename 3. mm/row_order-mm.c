@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef unsigned long longer;
-//--------------------------------------------------------------------
-//allocate 2D arrray of double
 double** malloc2D(longer size){
 	double** arr = (double**) malloc(sizeof(double*) * size);
 	longer i;
@@ -11,7 +9,6 @@ double** malloc2D(longer size){
 	}
 	return arr;
 }
-//--------------------------------------------------------------------
 void free2D(double** arr, longer size){
 	longer i;
 	for(i=0;i<size;i++){
@@ -19,24 +16,21 @@ void free2D(double** arr, longer size){
 	}
 	free(arr);
 }
-//--------------------------------------------------------------------
 double randFrom(double min, double max){
 	double range = max - min;
 	return min + rand() / (RAND_MAX / range);
 }
-//--------------------------------------------------------------------
 void matrix_mult(double** a, double** b, double** c, longer size){
 	longer i, j, k;
 	for(i=0;i<size;i++){
-		for(j=0;j<size;j++){
+		for(k=0;k<size;k++){
 			c[i][j] = 0;
-			for(k=0;k<size;k++){
+			for(j=0;j<size;j++){
 				c[i][j] += a[i][k] * b[k][j];
 			}
 		}
 	}
 }
-//--------------------------------------------------------------------
 int main(int argc, char** argv){
 	if(argc != 2){
 		printf("Invalid Args\n");
