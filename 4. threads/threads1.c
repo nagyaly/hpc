@@ -9,7 +9,7 @@ void* routine(void* raw_args){
 	}
 }
 int main(){
-	pthread_t tids;
+	pthread_t tid;
 	pthread_create(&tid, NULL, routine, NULL);
 	int i;
 	for(i=0;i<5;i++){
