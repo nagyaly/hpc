@@ -9,9 +9,9 @@
 
 | # | Topic | Content |
 | ------ | ------ | ------ |
-| 1 | Basics | write & compile codes, calculate runtime, Compiler Optimization |
-| 2 | DMA | Dynamic Memory Allocation |
-| 3 | Matrix Multiplication |  Row & Column Order Matrix Multiplication |
-| 4 | Threads | Threads in C |
+| 1 | Basics | Write & compile codes, calculate runtime, Compiler Optimization |
+| 2 | DMA | 1D and 2D Dynamic Memory Allocation |
+| 3 | Matrix Multiplication |  Blocked, Column Order, and Row Order Matrix Multiplication |
+| 4 | Threads | Threads in C, Threaded Matrix Multiplication |
 | 5 | OpenMP | Threads Automation using OpenMP |
 | 6 | CUDA | GPU utilization using CUDA |
