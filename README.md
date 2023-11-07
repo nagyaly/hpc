@@ -1,5 +1,5 @@
 # AASTMT | College of Artificial Intelligence
-## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2024-red)
+## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2023-red)
 ---
 ## This Course is Conducted By:
 - _Prof. Dr. Yasser Hanafy_
