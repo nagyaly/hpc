@@ -15,3 +15,11 @@
 | 4 | Threads | Threads in C, Threaded Matrix Multiplication |
 | 5 | OpenMP | Threads Automation using OpenMP |
 | 6 | CUDA | GPU utilization using CUDA |
+
+
+## usefull commands
+| info	| command |
+| ------ | ------ |
+| compile code | gcc file.c -o file |
+| compile code with pthread | gcc file.c -o file -lpthread |
+| submit job with parameters | sbatch submit.seq "perf stat -d ./dot-product" "data_50000_5000" |
