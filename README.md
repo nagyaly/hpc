@@ -17,16 +17,16 @@
 | 6 | CUDA | GPU utilization using CUDA |
 
 
-## usefull commands
-| info	| command |
+## Usefull commands
+| Info	| Command |
 | ------ | ------ |
 | compile code | gcc file.c -o file |
-| compile code with pthread | gcc file.c -o file -lpthread |
 | submit sequential job | sbatch submit.seq "./col_order-mm.c" |
 | monitor jobs progress | watch -n 1 "squeue" |
 | submit job and calculate time| sbatch submit.seq "time ./col_order-mm.c" |
 | submit job and profile cache hit/miss| sbatch submit.seq "perf stat -d ./col_order-mm.c" |
 | submit job with input from file| sbatch submit.seq "perf stat -d ./dot-product" "data_50000_5000" |
+| compile code with pthread | gcc file.c -o file -lpthread |
 | submit threaded job | sbatch submit.pthread "./col_order-mm.c" |
 | submit openmp job | sbatch submit.omp "./col_order-mm.c" |
 | submit cuda job | sbatch submit.gpu "./col_order-mm.c" |
