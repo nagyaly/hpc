@@ -2,10 +2,10 @@
 ## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2023-red)
 ---
 ## This Course is Conducted By:
-- _Prof. Dr. Yasser Hanafy_
-- _Eng. Ahmed M. Elsayed_
-- _Eng. Habiba Assem_
-- _Eng. Nagy K. Aly_
+- _Prof. Dr. Yasser Hanafy_ yhanafy@aast.edu
+- _Eng. Ahmed M. Elsayed_ compiler@aast.edu
+- _Eng. Habiba Assem_ habiba.assem@aast.edu
+- _Eng. Nagy K. Aly_ nagy@aast.edu
 
 | # | Topic | Content |
 | ------ | ------ | ------ |
