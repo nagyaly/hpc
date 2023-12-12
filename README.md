@@ -26,7 +26,8 @@
 | submit job and calculate time| sbatch submit.seq "time ./col_order-mm.c" |
 | submit job and profile cache hit/miss| sbatch submit.seq "perf stat -d ./col_order-mm.c" |
 | submit job with input from file| sbatch submit.seq "perf stat -d ./dot-product" "data_50000_5000" |
-| compile code with pthread | gcc file.c -o file -lpthread |
-| submit threaded job | sbatch submit.pthread "./col_order-mm.c" |
-| submit openmp job | sbatch submit.omp "./col_order-mm.c" |
-| submit cuda job | sbatch submit.gpu "./col_order-mm.c" |
+| compile code with pthread | gcc input_file.c -o out_file -lpthread |
+| submit threaded job | sbatch submit.pthread "./out_file" |
+| submit openmp job | sbatch submit.omp "./out_file" |
+| compile cuda code | submit.nvcc input_file.cu -o out_file |
+| submit cuda job | sbatch submit.gpu "./out_file" |
