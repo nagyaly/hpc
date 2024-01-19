@@ -11,11 +11,12 @@
 | ------ | ------ | ------ |
 | 1 | Basics | Write & compile codes, calculate runtime, Compiler Optimization |
 | 2 | DMA | 1D and 2D Dynamic Memory Allocation |
-| 3 | Matrix Multiplication |  Blocked, Column Order, and Row Order Matrix Multiplication |
-| 4 | Threads | Threads in C, Threaded Matrix Multiplication |
-| 5 | OpenMP | Threads Automation using OpenMP |
-| 6 | CUDA | GPU utilization using CUDA |
-
+| 3 | Matrix Multiplication | Blocked, Column Order, and Row Order Matrix Multiplication |
+| 4 | SPMV | Sparse Matrix Vector Multiplication, Dot Product |
+| 5 | Threads | Threads in C, Threaded Matrix Multiplication |
+| 6 | OpenMP | Threads Automation using OpenMP |
+| 7 | CUDA | GPU utilization using CUDA |
+| 8 | MPI | Message PAssing Interface | 
 
 ## Usefull commands
 | Info	| Command |
@@ -31,3 +32,5 @@
 | submit openmp job | sbatch submit.omp "./out_file" |
 | compile cuda code | submit.nvcc input_file.cu -o out_file |
 | submit cuda job | sbatch submit.gpu "./out_file" |
+| compile mpi code | mpicc input_file.c -o out_file |
+| submit mpi job | sbatch submit.mpi "./out_file" |
