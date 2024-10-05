@@ -12,12 +12,12 @@ int main(int argc, char** argv){
 	}
 	//-----------------------------------------------------------------------------------
 	clock_t t_start = clock();
-	unsigned long SIZE = atoi(argv[1]);
+	unsigned long int SIZE = atoi(argv[1]);
 	double* arr = (double*) malloc(sizeof(double) * SIZE);
 	printf("Elapsed Allocation: %.6f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
 	t_start = clock();
-	unsigned long i;
+	unsigned long int i;
 	double sum = 0;
 	for(i=0;i<SIZE;i++){
 		arr[i] = randFrom(-1.0, 1.0);

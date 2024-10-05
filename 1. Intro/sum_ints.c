@@ -16,10 +16,10 @@ int main(int argc, char** argv){
 	printf("Elapsed Allocation: %.6f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
 	t_start = clock();
-	unsigned long i;
-	unsigned long sum = 0;
+	unsigned long int i;
+	unsigned long int sum = 0;
 	for(i=0;i<SIZE;i++){
-		arr[i] = randIntFrom(-10, 10);
+		arr[i] = randIntFrom(0, 10);
 	}
 	printf("Elapsed Fill: %.3f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
