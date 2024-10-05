@@ -1,22 +1,15 @@
 # AASTMT | College of Artificial Intelligence
-## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2023-red)
+## High Performance Computing ![](https://img.shields.io/badge/Semester-Fall--2024-red)
 ---
 ## This Course is Conducted By:
 - _Prof. Dr. Yasser Hanafy_ yhanafy@aast.edu
 - _Eng. Ahmed M. Elsayed_ compiler@aast.edu
-- _Eng. Habiba Assem_ habiba.assem@aast.edu
+- _Eng. Amira Abuelyazid_ 
 - _Eng. Nagy K. Aly_ nagy@aast.edu
 
 | # | Topic | Content |
 | ------ | ------ | ------ |
 | 1 | Basics | Write & compile codes, calculate runtime, Compiler Optimization |
-| 2 | DMA | 1D and 2D Dynamic Memory Allocation |
-| 3 | Matrix Multiplication | Blocked, Column Order, and Row Order Matrix Multiplication |
-| 4 | SPMV | Sparse Matrix Vector Multiplication, Dot Product |
-| 5 | Threads | Threads in C, Threaded Matrix Multiplication |
-| 6 | OpenMP | Threads Automation using OpenMP |
-| 7 | CUDA | GPU utilization using CUDA |
-| 8 | MPI | Message PAssing Interface | 
 
 ## Usefull commands
 | Info	| Command |
