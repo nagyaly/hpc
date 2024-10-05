@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-double randFrom(double min, double max){
-	double range = max - min;
+float randFrom(float min, float max){
+	float range = max - min;
 	return min + rand() / (RAND_MAX / range);
 }
 int main(int argc, char** argv){
@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 	//-----------------------------------------------------------------------------------
 	clock_t t_start = clock();
 	unsigned long int SIZE = atoi(argv[1]);
-	double* arr = (double*) malloc(sizeof(double) * SIZE);
+	float* arr = (float*) malloc(sizeof(float) * SIZE);
 	printf("Elapsed Allocation: %.6f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
 	t_start = clock();
@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 	}
 	printf("Elapsed SUM: %.3f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
-	printf("\nSUM: %.3f\n", sum);
+	printf("Float SUM: %.3f\n\n", sum);
 	free(arr);
 	return 0;
 }

@@ -13,6 +13,10 @@ int main(int argc, char** argv){
 	clock_t t_start = clock();
 	unsigned long SIZE = atoi(argv[1]);
 	int* arr = (int*) malloc(sizeof(int) * SIZE);
+	if(arr == NULL){
+		perror("Allocation failed\n");
+		return 1;
+	}
 	printf("Elapsed Allocation: %.6f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
 	t_start = clock();
@@ -32,7 +36,7 @@ int main(int argc, char** argv){
 	}
 	printf("Elapsed SUM: %.3f\n", (double)(clock() - t_start) / CLOCKS_PER_SEC);
 	//-----------------------------------------------------------------------------------
-	printf("\nSUM: %ld\n", sum);
+	printf("Ints SUM: %ld\n\n", sum);
 	free(arr);
 	return 0;
 }
