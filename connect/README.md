@@ -22,5 +22,6 @@
 - Portx: https://portx.online/en/
 - Putty: https://www.putty.org
 ## 4- Make SSH Connection
-- 
-
+Connect using the following (ssh aastmail@10.1.8.4) and your aastmail password \
+Note: your password does not show when typing \
+Example: ssh nagy.khairat@student.aast.edu@10.1.8.4
