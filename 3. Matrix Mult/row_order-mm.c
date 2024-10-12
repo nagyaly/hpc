@@ -1,27 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef unsigned long longer;
-double** malloc2D(longer size){
-	double** arr = (double**) malloc(sizeof(double*) * size);
-	longer i;
+#include <time.h>
+float** malloc2D(unsigned long int size){
+	float** arr = (float**) malloc(sizeof(float*) * size);
+	unsigned long int i;
 	for(i=0;i<size;i++){
-		arr[i] = (double*) malloc(sizeof(double) * size);
+		arr[i] = (float*) malloc(sizeof(float) * size);
 	}
 	return arr;
 }
-void free2D(double** arr, longer size){
-	longer i;
+void free2D(float** arr, unsigned long int size){
+	unsigned long int i;
 	for(i=0;i<size;i++){
 		free(arr[i]);
 	}
 	free(arr);
 }
-double randFrom(double min, double max){
-	double range = max - min;
+float randFrom(float min, float max){
+	float range = max - min;
 	return min + rand() / (RAND_MAX / range);
 }
-void matrix_mult(double** a, double** b, double** c, longer size){
-	longer i, j, k;
+void matrix_mult(float** a, float** b, float** c, unsigned long int size){
+	unsigned long int i, j, k;
 	for(i=0;i<size;i++){
 		for(k=0;k<size;k++){
 			c[i][j] = 0;
@@ -36,13 +36,13 @@ int main(int argc, char** argv){
 		printf("Invalid Args\n");
 		return -1;
 	}
-	longer size = atoi(argv[1]);
+	unsigned long int size = atoi(argv[1]);
 	//----------------------------------------------------------------
-	double** a = malloc2D(size);
-	double** b = malloc2D(size);
-	double** c = malloc2D(size);
+	float** a = malloc2D(size);
+	float** b = malloc2D(size);
+	float** c = malloc2D(size);
 	//----------------------------------------------------------------
-	longer i, j;
+	unsigned long int i, j;
 	for(i=0;i<size;i++){
 		for(j=0;j<size;j++){
 			a[i][j] = randFrom(-1.0, 1.0);
@@ -50,7 +50,10 @@ int main(int argc, char** argv){
 		}
 	}
 	//----------------------------------------------------------------
+    clock_t start = clock();
 	matrix_mult(a, b, c, size);
+    clock_t end = clock();
+    printf("Elapsed: %.6f sec\n", (double)(end - start) / CLOCKS_PER_SEC);
 	//----------------------------------------------------------------
 	free2D(a, size);
 	free2D(b, size);
