@@ -4,18 +4,19 @@
 void* routine(void* raw_args){
 	int i;
 	for(i=0;i<5;i++){
-		printf("B: %d\n", i);
-		sleep(1);
+		printf("child: %d\n", i);
+		sleep(1);			//seconds
 	}
 }
 int main(){
+	//id for the thread
 	pthread_t tid;
-	pthread_create(&tid, NULL, routine, NULL);
+	pthread_create(&tid, NULL, routine, NULL);		//thread id, attr, routine, args
 	int i;
 	for(i=0;i<5;i++){
-		printf("A: %d\n", i);
-		usleep(0.2 * 1000000);
+		printf("main: %d\n", i);
+		usleep(0.2 * 1e6);		//micro seconds
 	}
-	pthread_exit(NULL);
+	pthread_exit(NULL);			//
 	return 0;
 }

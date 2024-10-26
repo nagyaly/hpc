@@ -18,10 +18,16 @@ int main(){
 		labels[i] = 'A' + i;
 		pthread_create(&tids[i], NULL, routine, &labels[i]);
 	}
+	//---------------------------------------------------
 	for(i=0;i<5;i++){
 		printf("main: %d\n", i);
 		usleep(0.5 * 1e6);
 	}
+	//---------------------------------------------------
+	for(i=0;i<SIZE;i++){
+		pthread_join(tids[i], NULL);
+	}
+	printf("All threads finished\n");
 	pthread_exit(NULL);
 	return 0;
 }

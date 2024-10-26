@@ -34,8 +34,8 @@ void* mm_routine(void* raw_args){
 	unsigned long int end = start + portion;
 	printf("Thread %d: from %ld to %ld\n", *id, start, end);
 	unsigned long int i, j, k;
-	for(i=start;i<end;i++){
-		for(j=0;j<size;j++){
+	for(i=0;i<size;i++){
+		for(j=start;j<end;j++){
 			c[i][j] = 0;
 			for(k=0;k<size;k++){
 				c[i][j] += a[i][k] * b[k][j];
@@ -80,7 +80,7 @@ int main(int argc, char** argv){
 		pthread_join(tids[i], NULL);
 	}
 	clock_t end = clock();
-	printf("Elapsed Time: %.6f sec\n", (double)(end - start) / CLOCKS_PER_SEC);
+	printf("%ld Threads elapsed: %.6f sec\n", tcount, (double)(end - start) / CLOCKS_PER_SEC);
 	//----------------------------------------------------------------
 	free2D(a, size);
 	free2D(b, size);
