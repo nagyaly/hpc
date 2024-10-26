@@ -1,40 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-typedef unsigned long longer;
-double **a, **b, **c;
-longer size, tcount;
+float **a, **b, **c;
+unsigned long int size, tcount;
 //--------------------------------------------------------------------
-//allocate 2D arrray of double
-double** malloc2D(longer size){
-	double** arr = (double**) malloc(sizeof(double*) * size);
-	longer i;
+//allocate 2D arrray of float
+float** malloc2D(unsigned long int size){
+	float** arr = (float**) malloc(sizeof(float*) * size);
+	unsigned long int i;
 	for(i=0;i<size;i++){
-		arr[i] = (double*) malloc(sizeof(double) * size);
+		arr[i] = (float*) malloc(sizeof(float) * size);
 	}
 	return arr;
 }
 //--------------------------------------------------------------------
-void free2D(double** arr, longer size){
-	longer i;
+void free2D(float** arr, unsigned long int size){
+	unsigned long int i;
 	for(i=0;i<size;i++){
 		free(arr[i]);
 	}
 	free(arr);
 }
 //--------------------------------------------------------------------
-double randFrom(double min, double max){
-	double range = max - min;
+float randFrom(float min, float max){
+	float range = max - min;
 	return min + rand() / (RAND_MAX / range);
 }
 //--------------------------------------------------------------------
 void* mm_routine(void* raw_args){
 	int* id = (int*) raw_args;
-	longer portion = size / tcount;
-	longer start = *id * portion;
-	longer end = start + portion;
+	unsigned long int portion = size / tcount;
+	unsigned long int start = *id * portion;
+	unsigned long int end = start + portion;
 	printf("Thread %d: from %ld to %ld\n", *id, start, end);
-	longer i, j, k;
+	unsigned long int i, j, k;
 	for(i=start;i<end;i++){
 		for(j=0;j<size;j++){
 			c[i][j] = 0;
@@ -61,7 +60,7 @@ int main(int argc, char** argv){
 	b = malloc2D(size);
 	c = malloc2D(size);
 	//----------------------------------------------------------------
-	longer i, j;
+	unsigned long int i, j;
 	for(i=0;i<size;i++){
 		for(j=0;j<size;j++){
 			a[i][j] = randFrom(-1.0, 1.0);
@@ -69,6 +68,7 @@ int main(int argc, char** argv){
 		}
 	}
 	//----------------------------------------------------------------
+	clock_t start = clock();
 	pthread_t tids[tcount];
 	int tidx[tcount];				//array for thread ids (sequence)
 	for(i=0;i<tcount;i++){
@@ -76,9 +76,15 @@ int main(int argc, char** argv){
 		pthread_create(&tids[i], NULL, mm_routine, &tidx[i]);
 	}
 	//----------------------------------------------------------------
-	pthread_exit(NULL);
+	for(i=0;i<tcount;i++){
+		pthread_join(tids[i], NULL);
+	}
+	clock_t end = clock();
+	printf("Elapsed Time: %.6f sec\n", (double)(end - start) / CLOCKS_PER_SEC);
+	//----------------------------------------------------------------
 	free2D(a, size);
 	free2D(b, size);
 	free2D(c, size);
+	pthread_exit(NULL);
 	return 0;
 }
