@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <omp.h>
-#define SIZE 10e8
 void do_work(){
 	int k;
 	for(k=0;k<5;k++){

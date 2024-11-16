@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <omp.h>
-#define SIZE 10e6
 #define REP 11
 void do_work(int id){
 //	printf("Id: %d\n", id);
-	unsigned long k;
-	for(k=0;k<SIZE;k++);
+	int k;
+	for(k=0;k<5;k++) sleep(1);
 }
 int main(){
 	int i;
