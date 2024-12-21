@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#define SIZE 10e7
+/*
+	to compile:
+		submit.nvcc cuda-v-add.cu -o cuda-v-add
+*/
+//kernel function, will be loaded into the GPU (device)
+__global__ void add_gpu(int* a, int* b, int* c, int size){
+	int i = blockIdx.x * blockDim.x + threadIdx.x;
+	if( i < size ){				//if thread id exceed the array size....
+		c[i] = a[i] + b[i];
+	}
+}
+void add_cpu(int* a, int* b, int* c, int size){
+	int i;
+	for(i=0;i<size;i++){
+		c[i] = a[i] + b[i];
+	}
+}
+void fill(int* arr, int size){
+	int i;
+	for(i=0;i<size;i++){
+		arr[i] = rand() % size;
+	}
+}
+void display(int* arr, int size){
+	int i;
+	for(i=0;i<size;i++){
+		printf("%d\t", arr[i]);
+	}
+	printf("\n");
+}
+int main(){
+	//-------------------	host data allocation
+	int *a, *b, *c;
+	a = (int *) malloc(sizeof(int) * SIZE);
+	b = (int *) malloc(sizeof(int) * SIZE);
+	c = (int *) malloc(sizeof(int) * SIZE);
+	fill(a, SIZE);
+	fill(b, SIZE);
+	//-------------------	cpu operation
+	cudaEvent_t cpu_start, cpu_end;
+	cudaEventCreate(&cpu_start);
+	cudaEventCreate(&cpu_end);
+	cudaEventRecord(cpu_start, 0);
+
+	add_cpu(a, b, c, SIZE);
+
+	cudaEventRecord(cpu_end, 0);
+	cudaEventSynchronize(cpu_end);
+	float cpu_elapsed;
+	cudaEventElapsedTime(&cpu_elapsed, cpu_start, cpu_end);
+	cudaEventDestroy(cpu_start);
+	cudaEventDestroy(cpu_end);
+	printf("Elapsed CPU: %.5f\n", cpu_elapsed);
+	//-------------------	display
+	//display(a, SIZE);
+	//display(b, SIZE);
+	//display(c, SIZE);
+	//-------------------	device
+	cudaEvent_t gpu_start, gpu_end;
+	cudaEventCreate(&gpu_start);
+	cudaEventCreate(&gpu_end);
+	cudaEventRecord(gpu_start, 0);
+
+	int *d_a, *d_b, *d_c;
+	//allocate memory in device
+	cudaMalloc((void **)&d_a, sizeof(int) * SIZE);
+	cudaMalloc((void **)&d_b, sizeof(int) * SIZE);
+	cudaMalloc((void **)&d_c, sizeof(int) * SIZE);
+	//copy input data from host to device
+	cudaMemcpy(d_a, a, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_b, b, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
+	//setup grid dim, and block dim
+	int threads_per_block = (SIZE > 512) ? 512 : SIZE;
+	int blocks_per_grid = ceil(SIZE / (double)threads_per_block);
+	printf("GridDim: %d\tBlockDim: %d\n", blocks_per_grid, threads_per_block);
+	//call the kernel function
+	add_gpu<<<blocks_per_grid, threads_per_block>>>(d_a, d_b, d_c, SIZE);
+	//copy output data from device to host
+	cudaMemcpy(c, d_c, sizeof(int) * SIZE, cudaMemcpyDeviceToHost);
+
+	cudaEventRecord(gpu_end, 0);
+	cudaEventSynchronize(gpu_end);
+	float gpu_elapsed;
+	cudaEventElapsedTime(&gpu_elapsed, gpu_start, gpu_end);
+	cudaEventDestroy(gpu_start);
+	cudaEventDestroy(gpu_end);
+	printf("Elapsed GPU: %.5f\n", gpu_elapsed);
+	//-------------------	deallocation
+	free(a);
+	free(b);
+	free(c);
+	return 0;
+}
