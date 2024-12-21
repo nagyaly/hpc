@@ -79,7 +79,9 @@ int main(){
 	int blocks_per_grid = ceil(SIZE / (double)threads_per_block);
 	printf("GridDim: %d\tBlockDim: %d\n", blocks_per_grid, threads_per_block);
 	//call the kernel function
+
 	add_gpu<<<blocks_per_grid, threads_per_block>>>(d_a, d_b, d_c, SIZE);
+
 	//copy output data from device to host
 	cudaMemcpy(c, d_c, sizeof(int) * SIZE, cudaMemcpyDeviceToHost);
 
@@ -90,6 +92,7 @@ int main(){
 	cudaEventDestroy(gpu_start);
 	cudaEventDestroy(gpu_end);
 	printf("Elapsed GPU: %.5f\n", gpu_elapsed);
+
 	//-------------------	deallocation
 	free(a);
 	free(b);
