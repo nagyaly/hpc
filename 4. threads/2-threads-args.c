@@ -12,8 +12,8 @@ void* routine(void* raw_args){
 }
 int main(){
 	int i;
-	pthread_t tids[SIZE];
-	char labels[SIZE];
+	pthread_t tids[SIZE];			//array for thread ids
+	char labels[SIZE];			//array for thread labels
 	for(i=0;i<SIZE;i++){
 		labels[i] = 'A' + i;
 		pthread_create(&tids[i], NULL, routine, &labels[i]);

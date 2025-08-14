@@ -11,7 +11,7 @@ void do_work(int id){
 int main(){
 	int i;
 	//create a prallel region
-	#pragma omp parallel num_threads(4)
+	#pragma omp parallel num_threads(3)
 	{
 		double time_start = omp_get_wtime();	//get current time
 		int tid = omp_get_thread_num();			//get thread id

@@ -85,6 +85,6 @@ int main(int argc, char** argv){
 	free2D(a, size);
 	free2D(b, size);
 	free2D(c, size);
-	pthread_exit(NULL);
+	//pthread_exit(NULL);
 	return 0;
 }

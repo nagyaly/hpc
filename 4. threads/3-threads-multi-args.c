@@ -12,7 +12,7 @@ void* routine(void* raw_args){
 	int i;
 	for(i=args->start;i<args->end;i++){
 		printf("%c: %d/%d/%d\n", args->label, args->start+1, i+1, args->end);
-		//sleep(1);
+		usleep(0.5 * 1e6);
 	}
 }
 int main(){
@@ -27,7 +27,10 @@ int main(){
 	}
 	for(i=0;i<5;i++){
 		printf("main: %d\n", i);
-		//usleep(1000 * 500);
+		usleep(0.5 * 1e6);
+	}
+	for(i=0;i<SIZE;i++){
+		pthread_join(tids[i], NULL);
 	}
 	pthread_exit(NULL);
 	return 0;
