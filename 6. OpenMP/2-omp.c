@@ -19,7 +19,7 @@ int main(){
 		//parallize this loop
 		#pragma omp for
 		for(i=0;i<REP;i++){
-			printf("a: %2d/%2d\t%d/%d\n", i+1, REP, tid, tnum);
+			printf("a: %2d/%2d\t%d/%d\n", i+1, REP, tid+1, tnum);
 			do_work(i+1);
 		}
 		double time_end = omp_get_wtime();		//get current time

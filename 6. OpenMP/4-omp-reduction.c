@@ -6,7 +6,7 @@ int main(){
 	unsigned long i;
 	#pragma omp parallel num_threads(10) reduction(+:sum)
 	{
-	    int tid = omp_get_thread_num();
+		int tid = omp_get_thread_num();
 		int tnum = omp_get_num_threads();
 		double time_start = omp_get_wtime();
 		#pragma omp for

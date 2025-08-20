@@ -13,7 +13,7 @@ void do_work(int id){
 	for(k=0;k<5;k++) sleep(1);
 
 	double time_end = omp_get_wtime();
-	printf("Task: %2d/%2d\tThread: %d/%d\tTime: %.8f\n", id, TASKS, tid, tnum, (time_end - time_start));
+	printf("Task: %2d/%2d\tThread: %d/%d\tTime: %.8f\n", id, TASKS, tid+1, tnum, (time_end - time_start));
 }
 int main(){
 	int i;
