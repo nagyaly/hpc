@@ -12,7 +12,7 @@ void do_work(){
 int main(){
 	int i;
 	//make the loop run in prallel
-	#pragma omp parallel for num_threads(5)
+	#pragma omp parallel for num_threads(1)
 	for(i=0;i<10;i++){
 		printf("%d/10\n", i+1);
 		do_work();
