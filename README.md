@@ -2,14 +2,18 @@
 ## High Performance Computing ![](https://img.shields.io/badge/Semeste-Summer--2025-red)
 ---
 ## This Course is Conducted By:
-- _Prof. Dr. Yasser Hanafy_ yhanafy@aast.edu
-- _Eng. Ahmed M. Elsayed_ compiler@aast.edu
-- _Eng. Amira Abuelyazid_ 
+- _Prof. Dr. Ahmed Abouelfarag_ abouelfarag@aast.edu
+- _Eng. Samar Elbialy samar.k.elbialy@aast.edu_
 - _Eng. Nagy K. Aly_ nagy@aast.edu
 
 | # | Topic | Content |
 | ------ | ------ | ------ |
 | 1 | Basics | Write & compile codes, calculate runtime, Compiler Optimization |
+| 2 | Malloc | Memory Allocation 1D and 2D | 
+| 3 | Matric Multiplication | Matrix Multiplication & Cache Effecient Approche, Sparse MAtric Vector Mutiplication |
+| 4 | Threads | Threads Routines, Passing Arguments, Multiple Arguments, Potion Distribution |
+| 5 | Openmp | Threads Automation with OpenMP |
+| 6 | CUDA | Nvidia GPU utilization |
 
 ## Usefull commands
 | Info	| Command |
