@@ -42,7 +42,7 @@ int main(){
 	fill(b, SIZE);
 	//-------------------	operation
 	add_cpu(a, b, c, SIZE);
-	//------------------- 	display
+	//-------------------	display
 	display(a, SIZE);
 	display(b, SIZE);
 	display(c, SIZE);
@@ -56,11 +56,11 @@ int main(){
 	cudaMemcpy(d_a, a, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
 	cudaMemcpy(d_b, b, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
 	//setup grid dim, and block dim
-	int threads_per_block = (SIZE > 512) ? 512 : SIZE;
-	int blocks_per_grid = ceil(SIZE / (double)threads_per_block);
-	printf("GridDim: %d\tBlockDim: %d\n", blocks_per_grid, threads_per_block);
+	int block_dim = (SIZE > 512) ? 512 : SIZE;	//threads per block
+	int grid_dim = ceil(SIZE / (double)block_dim);	//number of blocks
+	printf("GridDim: %d\tBlockDim: %d\n", grid_dim, block_dim);
 	//call the kernel function
-	add_gpu<<<blocks_per_grid, threads_per_block>>>(d_a, d_b, d_c, SIZE);
+	add_gpu<<<grid_dim, block_dim>>>(d_a, d_b, d_c, SIZE);
 	//copy output data from device to host
 	cudaMemcpy(c, d_c, sizeof(int) * SIZE, cudaMemcpyDeviceToHost);
 

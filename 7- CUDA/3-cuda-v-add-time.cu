@@ -8,37 +8,37 @@
 		submit.nvcc cuda-v-add.cu -o cuda-v-add
 */
 //kernel function, will be loaded into the GPU (device)
-__global__ void add_gpu(int* a, int* b, int* c, int size){
+__global__ void add_gpu(float* a, float* b, float* c, int size){
 	int i = blockIdx.x * blockDim.x + threadIdx.x;
 	if( i < size ){				//if thread id exceed the array size....
-		c[i] = a[i] + b[i];
+		c[i] = a[i] * b[i];
 	}
 }
-void add_cpu(int* a, int* b, int* c, int size){
+void add_cpu(float* a, float* b, float* c, int size){
 	int i;
 	for(i=0;i<size;i++){
-		c[i] = a[i] + b[i];
+		c[i] = a[i] * b[i];
 	}
 }
-void fill(int* arr, int size){
+void fill(float* arr, int size){
 	int i;
 	for(i=0;i<size;i++){
-		arr[i] = rand() % size;
+        	arr[i] -1.0 + rand() / (RAND_MAX / (1.0 - -1.0));
 	}
 }
-void display(int* arr, int size){
+void display(float* arr, int size){
 	int i;
 	for(i=0;i<size;i++){
-		printf("%d\t", arr[i]);
+		printf("%f\t", arr[i]);
 	}
 	printf("\n");
 }
 int main(){
 	//-------------------	host data allocation
-	int *a, *b, *c;
-	a = (int *) malloc(sizeof(int) * SIZE);
-	b = (int *) malloc(sizeof(int) * SIZE);
-	c = (int *) malloc(sizeof(int) * SIZE);
+	float *a, *b, *c;
+	a = (float *) malloc(sizeof(float) * SIZE);
+	b = (float *) malloc(sizeof(float) * SIZE);
+	c = (float *) malloc(sizeof(float) * SIZE);
 	fill(a, SIZE);
 	fill(b, SIZE);
 	//-------------------	cpu operation
@@ -66,14 +66,14 @@ int main(){
 	cudaEventCreate(&gpu_end);
 	cudaEventRecord(gpu_start, 0);
 
-	int *d_a, *d_b, *d_c;
+	float *d_a, *d_b, *d_c;
 	//allocate memory in device
-	cudaMalloc((void **)&d_a, sizeof(int) * SIZE);
-	cudaMalloc((void **)&d_b, sizeof(int) * SIZE);
-	cudaMalloc((void **)&d_c, sizeof(int) * SIZE);
+	cudaMalloc((void **)&d_a, sizeof(float) * SIZE);
+	cudaMalloc((void **)&d_b, sizeof(float) * SIZE);
+	cudaMalloc((void **)&d_c, sizeof(float) * SIZE);
 	//copy input data from host to device
-	cudaMemcpy(d_a, a, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
-	cudaMemcpy(d_b, b, sizeof(int) * SIZE, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_a, a, sizeof(float) * SIZE, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_b, b, sizeof(float) * SIZE, cudaMemcpyHostToDevice);
 	//setup grid dim, and block dim
 	int threads_per_block = (SIZE > 512) ? 512 : SIZE;
 	int blocks_per_grid = ceil(SIZE / (double)threads_per_block);
@@ -83,7 +83,7 @@ int main(){
 	add_gpu<<<blocks_per_grid, threads_per_block>>>(d_a, d_b, d_c, SIZE);
 
 	//copy output data from device to host
-	cudaMemcpy(c, d_c, sizeof(int) * SIZE, cudaMemcpyDeviceToHost);
+	cudaMemcpy(c, d_c, sizeof(float) * SIZE, cudaMemcpyDeviceToHost);
 
 	cudaEventRecord(gpu_end, 0);
 	cudaEventSynchronize(gpu_end);
