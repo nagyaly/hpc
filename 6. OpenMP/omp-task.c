@@ -36,7 +36,6 @@ int main(){
 	//---------------------------------------
 	unsigned long sum = 0;
 	unsigned long i, j;
-
 	for(i=0;i<ROW;i++){
 		for(j=0;j<COL;j++){
 			c[i][j] = a[i][j] + b[i][j];
