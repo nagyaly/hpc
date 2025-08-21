@@ -6,13 +6,13 @@ unsigned long COL = 1e6;
 double** alloc2D(){
 	unsigned long i, j;
 	double** matrix = (double**) malloc(sizeof(double*) * ROW);
-	for(i=0;i<COL;i++){
+	for(i=0;i<ROW;i++){
 		matrix[i] = (double*) malloc(sizeof(double) * COL);
 	}
 	return matrix;
 }
 void free2D(double** matrix){
-	unsigned long i, j;
+	unsigned long i;
 	for(i=0;i<ROW;i++){
 		free(matrix[i]);
 	}

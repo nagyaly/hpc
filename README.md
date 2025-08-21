@@ -23,7 +23,7 @@
 | compile code with pthread | gcc input_file.c -o out_file -lpthread |
 | compile code with openmp | gcc input_file.c -o out_file -fopenmp |
 | submit threaded job | sbatch submit.pthread "./out_file" |
-| submit openmp job | sbatch submit.omp "./out_file" |
+| submit openmp job | sbatch submit.openmp "./out_file" |
 | compile cuda code | submit.nvcc input_file.cu -o out_file |
 | compile cuda code and math.h | submit.nvcc input_file.cu -o out_file -lm |
 | submit cuda job | sbatch submit.gpu "./out_file" |
