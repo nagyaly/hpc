@@ -2,7 +2,10 @@
 ## High Performance Computing ![](https://img.shields.io/badge/Semeste-Summer--2025-red)
 ---
 ## This Course is Conducted By:
+- _Prof. Dr. Yasser Hanafy_ yhanafy@aast.edu
 - _Prof. Dr. Ahmed Abouelfarag_ abouelfarag@aast.edu
+- _Eng. Ahmed M. Elsayed compiler@aast.edu_
+- _Eng. Marwa Elazab melazab@adj.aast.edu_
 - _Eng. Samar Elbialy samar.k.elbialy@aast.edu_
 - _Eng. Nagy K. Aly_ nagy@aast.edu
 
